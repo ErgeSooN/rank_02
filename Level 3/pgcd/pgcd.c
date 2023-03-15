@@ -1,27 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char const *argv[])
+int main(int ac, char **av)
 {
-	int string1 = atoi(argv[1]);
-	int string2 = atoi(argv[2]);
+	int num1 = atoi(av[1]);
+	int num2 = atoi(av[2]);
+	int num3;
 
-	if (argc != 3)
+	if (num1 <= 0 || num2 <= 0)
+		return (0);
+
+	while (num2 != 0)
 	{
-		printf("\n");
-		return 0;
+		num3 = num2;
+		num2 = num1 % num2;
+		num1 = num3;
 	}
-	if (string1 <= 0 || string2 <= 0)
-	{
-		printf("\n");
-		return 0;
-	}
-	while (string2 != 0)
-	{
-		int temporary = string2;
-		string2 = string1 % string2;
-		string1 = temporary;
-	}
-	printf("%d\n", string1);
-	return 0;
+	printf("%d\n", num1);
+	return(num1);
 }
